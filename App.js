@@ -1,16 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { useState } from 'react';
-import {
-  Button, SafeAreaView, StyleSheet, Text, View, Image,
-  TouchableWithoutFeedback, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback
-} from 'react-native';
-import HomePage from './app/screens/HomePage';
-import ImageScreen from './app/screens/ImageScreen';
+v
+// import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading'
+import { Container, Text} from 'native-base';
+import {StyleSheet} from 'react-native'
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
+import OpenPage from './screens/OpenPage';
 
-export default function App() {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isReady: false,
+    };
+  }
 
-  return (
-     <ImageScreen/>
-  );
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      ...Ionicons.font,
+    });
+    this.setState({ isReady: true });
+  }
+
+  render() {
+    if (!this.state.isReady) {
+      return <AppLoading />;
+    }
+
+    return (
+      <OpenPage/>
+    );
+  }
 }
