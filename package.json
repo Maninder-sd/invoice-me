@@ -2,14 +2,19 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "server": "nodemon database/Server.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^10.7.0",
+    "@react-native-firebase/database": "^10.7.0",
     "expo": "~40.0.0",
     "expo-status-bar": "~1.0.3",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
